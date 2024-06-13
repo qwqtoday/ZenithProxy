@@ -39,10 +39,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class Shared {
+    public static final Map<String, String> ENV = System.getenv();
     public static final Gson GSON = new GsonBuilder()
         .disableHtmlEscaping()
         .setPrettyPrinting()
@@ -60,7 +62,8 @@ public class Shared {
     public static final Logger DISCORD_LOG = LoggerFactory.getLogger("Discord");
     public static final Logger DATABASE_LOG = LoggerFactory.getLogger("Database");
     public static final Logger TERMINAL_LOG = LoggerFactory.getLogger("Terminal");
-    public static final File CONFIG_FILE = new File("config.json");
+    public static final String CONFIG_FILE_LOCATION = ENV.get("CONFIG_FILE_LOCATION") != null ? ENV.get("CONFIG_FILE_LOCATION") : "config.json";
+    public static final File CONFIG_FILE = new File(CONFIG_FILE_LOCATION);
     public static final File LAUNCH_CONFIG_FILE = new File("launch_config.json");
     public static final String SERVER_RESTARTING = "Server restarting";
     public static final String SYSTEM_DISCONNECT = "System disconnect";
