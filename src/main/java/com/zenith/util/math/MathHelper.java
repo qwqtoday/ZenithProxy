@@ -117,9 +117,9 @@ public class MathHelper {
     }
 
     public static boolean yawIsNear(float yaw, float targetYaw, float range) {
-        float yawAbs = Math.abs(yaw);
-        float targetYawAbs = Math.abs(targetYaw);
-        return wrapYaw(yawAbs + targetYawAbs) <= range || Math.abs(yawAbs - targetYawAbs) <= range;
+        float distance1 = Math.abs(yaw - targetYaw);
+        float distance2 = 360 - distance1;
+        return range >= distance1 || range >= distance2;
     }
 
     public static Vector3d calculateRayEndPos(double x, double y, double z, double yaw, double pitch, double maxDistance) {
