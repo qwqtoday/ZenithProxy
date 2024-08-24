@@ -117,8 +117,8 @@ public class MathHelper {
     }
 
     public static boolean yawIsNear(float yaw, float targetYaw, float range) {
-        float yawAbs = 180 - Math.abs(yaw);
-        float targetYawAbs = 180 - Math.abs(targetYaw);
+        float yawAbs = Math.abs(yaw);
+        float targetYawAbs = Math.abs(targetYaw);
         return targetYawAbs + yawAbs <= range || Math.abs(yawAbs - targetYawAbs) <= range;
     }
 
